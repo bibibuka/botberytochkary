@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PersonalBerkBot — AI-ассистент для рекрутинга</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #4f46e5, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .blob {
+            position: absolute;
+            filter: blur(40px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter text-slate-900">
+                Personal<span class="text-indigo-600">Berk</span>Bot
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#problems" class="hover:text-indigo-600 transition">Проблемы</a>
+                <a href="#solution" class="hover:text-indigo-600 transition">Решение</a>
+                <a href="#benefits" class="hover:text-indigo-600 transition">Выгода</a>
+                <a href="#pricing" class="hover:text-indigo-600 transition">Стоимость</a>
+            </div>
+            <!-- Buttons removed for informational page -->
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="blob bg-purple-300 w-64 h-64 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="blob bg-indigo-300 w-96 h-96 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
+        
+        <div class="container mx-auto px-6 text-center">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold tracking-wide uppercase">
+                AI-технологии в HR
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+                Personal<span class="gradient-text">Berk</span>Bot <br class="hidden md:block" />
+                AI-ассистент рекрутера
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+                Автоматизируйте первичный отбор и освободите рекрутеров для важных задач. Ваш лучший стажёр, который никогда не спит.
+            </p>
+        </div>
+    </header>
+
+    <!-- Problems Section -->
+    <section id="problems" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Знакомая ситуация?</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Рутина убивает продуктивность. Узнайте себя в этих сценариях.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition">
+                        <i class="fa-regular fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Потеря времени</h3>
+                    <p class="text-slate-600">Рекрутер отвечает на одни и те же вопросы 50 раз в день — 3-4 часа уходит в никуда.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Уход кандидатов</h3>
+                    <p class="text-slate-600">Кандидат написал в 23:00, ответ только утром — он уже ушёл к конкуренту.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Хаос в данных</h3>
+                    <p class="text-slate-600">Сбор анкет вручную в переписках — данные теряются, структуру сложно поддерживать.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition group lg:col-span-3 md:col-span-2">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                        <div class="w-12 h-12 bg-gray-100 text-gray-600 rounded-lg flex-shrink-0 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Выгорание на рутине</h3>
+                            <p class="text-slate-600">10 вакансий в работе и каждую нужно презентовать. Результат: агентство теряет кандидатов, время и деньги.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 bg-slate-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-indigo-900/50 border border-indigo-500/30 text-indigo-300 text-xs font-bold tracking-wide uppercase">
+                        Решение
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+                        Personal<span class="text-indigo-400">Berk</span> Bot — ваш идеальный цифровой сотрудник
+                    </h2>
+                    <p class="text-slate-300 text-lg mb-8">
+                        Telegram-бот с искусственным интеллектом, который работает как ваш лучший стажёр — только с минимальной зарплатой и без отпусков.
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center mt-1">
+                                <i class="fa-solid fa-check text-sm"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Мгновенная реакция</h4>
+                                <p class="text-slate-400">Кандидат пишет в Telegram — бот отвечает за 15 секунд в любое время суток.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center mt-1">
+                                <i class="fa-solid fa-list-check text-sm"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Автоматическое анкетирование</h4>
+                                <p class="text-slate-400">Бот сам задает вопросы и собирает данные, пока вы отдыхаете.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center mt-1">
+                                <i class="fa-solid fa-file-circle-check text-sm"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold">Готовая заявка</h4>
+                                <p class="text-slate-400">Рекрутер получает структурированную информацию о кандидате.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 relative">
+                    <!-- Chat UI Mockup -->
+                    <div class="bg-slate-800 rounded-3xl p-6 border border-slate-700 shadow-2xl max-w-md mx-auto">
+                        <div class="flex items-center border-b border-slate-700 pb-4 mb-4">
+                            <div class="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-robot text-white"></i>
+                            </div>
+                            <div class="ml-3">
+                                <div class="font-bold">PersonalBerk Bot</div>
+                                <div class="text-xs text-indigo-300">bot</div>
+                            </div>
+                        </div>
+                        <div class="space-y-4 text-sm">
+                            <div class="bg-slate-700 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
+                                Здравствуйте! Я AI-ассистент. Интересует вакансия Менеджера?
+                            </div>
+                            <div class="bg-indigo-600 p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto text-white">
+                                Да, добрый вечер! Хочу узнать подробности.
+                            </div>
+                            <div class="bg-slate-700 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
+                                Отлично! У нас гибкий график и оклад от 80к. Подскажите, есть ли у вас опыт работы в продажах?
+                            </div>
+                            <div class="bg-indigo-600 p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto text-white">
+                                Да, работал 2 года в недвижимости.
+                            </div>
+                            <div class="bg-slate-700 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
+                                Прекрасно. Записал. Какой график вам удобен?
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-slate-700 flex items-center text-slate-500">
+                            <span>Сообщение...</span>
+                            <i class="fa-regular fa-paper-plane ml-auto hover:text-indigo-400 cursor-pointer"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefit Numbers Section -->
+    <section id="benefits" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Выгода в цифрах</h2>
+                <p class="text-slate-600">Результаты внедрения говорят сами за себя</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="text-sm text-slate-500 mb-2">Время ответа</div>
+                    <div class="text-3xl font-bold text-slate-800">15 сек</div>
+                    <div class="text-xs text-red-500 line-through mt-1">было 15 мин</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="text-sm text-slate-500 mb-2">Сбор анкеты</div>
+                    <div class="text-3xl font-bold text-slate-800">0 мин</div>
+                    <div class="text-xs text-red-500 line-through mt-1">было 20 мин</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="text-sm text-slate-500 mb-2">Потеря лидов</div>
+                    <div class="text-3xl font-bold text-indigo-600">0%</div>
+                    <div class="text-xs text-red-500 line-through mt-1">было 20%</div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="text-sm text-slate-500 mb-2">Доступность</div>
+                    <div class="text-3xl font-bold text-green-600">24/7</div>
+                    <div class="text-xs text-red-500 line-through mt-1">только будни</div>
+                </div>
+            </div>
+
+            <!-- Calculation Block -->
+            <div class="bg-indigo-600 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full translate-x-1/3 -translate-y-1/3"></div>
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold mb-6 border-b border-indigo-400 pb-4 inline-block">Экономика в 10 раз</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <h4 class="text-indigo-200 font-semibold mb-4 uppercase text-sm tracking-wider">Человек (100 кандидатов)</h4>
+                            <ul class="space-y-3 text-indigo-50">
+                                <li class="flex justify-between">
+                                    <span>Время на диалоги:</span>
+                                    <span class="font-bold">25 часов</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Стоимость часа:</span>
+                                    <span class="font-bold">250 ₽</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Бонус за найм (1 чел):</span>
+                                    <span class="font-bold">5 000 ₽</span>
+                                </li>
+                                <li class="pt-4 border-t border-indigo-400/50 flex justify-between text-xl font-bold">
+                                    <span>Итого затрат:</span>
+                                    <span>11 250 ₽</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="text-green-300 font-semibold mb-4 uppercase text-sm tracking-wider">PersonalBerk Bot (100 кандидатов)</h4>
+                            <ul class="space-y-3 text-indigo-50">
+                                <li class="flex justify-between">
+                                    <span>Стоимость API на 1 чел:</span>
+                                    <span class="font-bold">~11 ₽</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Обработка базы:</span>
+                                    <span class="font-bold">Автоматически</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Сбор запасных:</span>
+                                    <span class="font-bold">Включено</span>
+                                </li>
+                                <li class="pt-4 border-t border-indigo-400/50 flex justify-between text-xl font-bold text-white">
+                                    <span>Итого затрат:</span>
+                                    <span class="text-green-300">1 100 ₽</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 text-center">
+                        <div class="inline-block bg-white text-indigo-700 px-6 py-3 rounded-lg font-bold text-lg shadow-lg">
+                            Окупаемость — за 400 кандидатов!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features & Included -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl font-bold mb-8 text-slate-900">Что входит в стоимость</h2>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fa-brands fa-telegram"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Интеграция с Telegram</h4>
+                                <p class="text-slate-600 text-sm">Полностью ваш бот, на вашем аккаунте.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-sliders"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Панель управления</h4>
+                                <p class="text-slate-600 text-sm">Добавление и удаление вакансий через простые команды.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-bell"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Мгновенные уведомления</h4>
+                                <p class="text-slate-600 text-sm">Заявки приходят рекрутеру сразу после заполнения.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-headset"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Техподдержка</h4>
+                                <p class="text-slate-600 text-sm">Помощь с настройкой и ответы на все вопросы.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+                    <h3 class="text-xl font-bold mb-6 text-slate-800">Скоро добавим</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-slate-500">
+                            <i class="fa-solid fa-table text-green-600"></i>
+                            <span>Выгрузка заявок в Google Таблицы</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-500">
+                            <i class="fa-solid fa-briefcase text-blue-500"></i>
+                            <span>Интеграция с Битрикс24</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-500">
+                            <i class="fa-solid fa-chart-pie text-purple-500"></i>
+                            <span>Аналитика по конверсии</span>
+                        </div>
+                    </div>
+                    <div class="mt-8 p-4 bg-indigo-50 border border-indigo-100 rounded-lg text-sm text-indigo-800">
+                        <i class="fa-solid fa-rocket mr-2"></i> Мы постоянно развиваем продукт, чтобы вы нанимали лучших ещё быстрее.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
+                <div class="bg-slate-900 p-6 text-center">
+                    <h2 class="text-2xl text-white font-bold">Стоимость внедрения</h2>
+                </div>
+                <div class="p-8 md:p-12 text-center">
+                    <div class="text-5xl md:text-6xl font-extrabold text-slate-900 mb-4">
+                        40 000 ₽
+                    </div>
+                    <p class="text-slate-500 mb-8 uppercase tracking-wide font-semibold text-sm">
+                        Единоразовый платеж
+                    </p>
+                    
+                    <div class="grid gap-4 text-left max-w-md mx-auto mb-10">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-green-500"></i>
+                            <span class="text-slate-700">Бот переходит в вашу полную собственность</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-green-500"></i>
+                            <span class="text-slate-700">Никакой абонентской платы</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-green-500"></i>
+                            <span class="text-slate-700">Без ограничений по кандидатам</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-50 border border-yellow-100 p-4 rounded-xl text-sm text-yellow-800">
+                        <i class="fa-solid fa-info-circle mr-1"></i> Вы оплачиваете только API OpenAI напрямую (~11 ₽ за кандидата)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacts -->
+    <footer id="contacts" class="bg-slate-900 text-white pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Контакты</h2>
+                    <p class="text-slate-400 mb-8 text-lg">
+                        PersonalBerk Bot — решения для рекрутинга. Ваш рекрутер, который никогда не спит.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-xl text-indigo-400">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm text-slate-500">Телефон / WhatsApp / Telegram</div>
+                                <a href="tel:89030926659" class="text-xl font-bold hover:text-indigo-400 transition">8 903 092-66-59</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                     <div class="p-6 bg-slate-800 rounded-xl border border-slate-700">
+                         <h4 class="font-bold text-lg mb-2 text-white">Хотите увидеть демо?</h4>
+                         <p class="text-slate-400">Напишите слово <span class="text-indigo-400 font-bold">«ДЕМО»</span> в любой мессенджер, и мы покажем бота в действии.</p>
+                     </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+                &copy; 2023 PersonalBerk Bot. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
