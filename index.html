@@ -10,17 +10,67 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
         .gradient-text {
             background: linear-gradient(to right, #4f46e5, #db2777);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
         }
         .blob {
             position: absolute;
-            filter: blur(40px);
+            filter: blur(60px);
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.5;
+            animation: float 10s ease-in-out infinite;
+        }
+        .blob:nth-child(2) {
+            animation-delay: -5s;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+        
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Chat Typing Animation */
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        /* Card Hover Effect */
+        .hover-card-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-card-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -48,14 +98,14 @@
         <div class="blob bg-indigo-300 w-96 h-96 rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
         
         <div class="container mx-auto px-6 text-center">
-            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold tracking-wide uppercase">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-bold tracking-wide uppercase reveal">
                 AI-технологии в HR
             </div>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight reveal delay-100">
                 Personal<span class="gradient-text">Berk</span>Bot <br class="hidden md:block" />
                 AI-ассистент рекрутера
             </h1>
-            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto reveal delay-200">
                 Автоматизируйте первичный отбор и освободите рекрутеров для важных задач. Ваш лучший стажёр, который никогда не спит.
             </p>
         </div>
@@ -64,40 +114,40 @@
     <!-- Problems Section -->
     <section id="problems" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4 text-slate-900">Знакомая ситуация?</h2>
                 <p class="text-slate-600 max-w-2xl mx-auto">Рутина убивает продуктивность. Узнайте себя в этих сценариях.</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition group">
-                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition">
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover-card-effect reveal group delay-100">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition duration-300">
                         <i class="fa-regular fa-clock"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Потеря времени</h3>
                     <p class="text-slate-600">Рекрутер отвечает на одни и те же вопросы 50 раз в день — 3-4 часа уходит в никуда.</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition group">
-                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition">
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover-card-effect reveal delay-200 group">
+                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Уход кандидатов</h3>
                     <p class="text-slate-600">Кандидат написал в 23:00, ответ только утром — он уже ушёл к конкуренту.</p>
                 </div>
                 <!-- Card 3 -->
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition group">
-                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition">
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover-card-effect reveal delay-300 group">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center mb-6 text-xl group-hover:scale-110 transition duration-300">
                         <i class="fa-solid fa-database"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Хаос в данных</h3>
                     <p class="text-slate-600">Сбор анкет вручную в переписках — данные теряются, структуру сложно поддерживать.</p>
                 </div>
                 <!-- Card 4 -->
-                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-lg transition group lg:col-span-3 md:col-span-2">
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 hover-card-effect reveal delay-400 group lg:col-span-3 md:col-span-2">
                     <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
-                        <div class="w-12 h-12 bg-gray-100 text-gray-600 rounded-lg flex-shrink-0 flex items-center justify-center text-xl">
+                        <div class="w-12 h-12 bg-gray-100 text-gray-600 rounded-lg flex-shrink-0 flex items-center justify-center text-xl group-hover:scale-110 transition duration-300">
                             <i class="fa-solid fa-fire"></i>
                         </div>
                         <div>
@@ -167,22 +217,8 @@
                                 <div class="text-xs text-indigo-300">bot</div>
                             </div>
                         </div>
-                        <div class="space-y-4 text-sm">
-                            <div class="bg-slate-700 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
-                                Здравствуйте! Я AI-ассистент. Интересует вакансия Менеджера?
-                            </div>
-                            <div class="bg-indigo-600 p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto text-white">
-                                Да, добрый вечер! Хочу узнать подробности.
-                            </div>
-                            <div class="bg-slate-700 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
-                                Отлично! У нас гибкий график и оклад от 80к. Подскажите, есть ли у вас опыт работы в продажах?
-                            </div>
-                            <div class="bg-indigo-600 p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto text-white">
-                                Да, работал 2 года в недвижимости.
-                            </div>
-                            <div class="bg-slate-700 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
-                                Прекрасно. Записал. Какой график вам удобен?
-                            </div>
+                        <div id="chat-messages" class="space-y-4 text-sm min-h-[300px]">
+                            <!-- Messages will be injected by JS -->
                         </div>
                         <div class="mt-6 pt-4 border-t border-slate-700 flex items-center text-slate-500">
                             <span>Сообщение...</span>
@@ -197,28 +233,28 @@
     <!-- Benefit Numbers Section -->
     <section id="benefits" class="py-20 bg-slate-50">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 reveal">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Выгода в цифрах</h2>
                 <p class="text-slate-600">Результаты внедрения говорят сами за себя</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center reveal hover-card-effect">
                     <div class="text-sm text-slate-500 mb-2">Время ответа</div>
                     <div class="text-3xl font-bold text-slate-800">15 сек</div>
                     <div class="text-xs text-red-500 line-through mt-1">было 15 мин</div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center reveal hover-card-effect delay-100">
                     <div class="text-sm text-slate-500 mb-2">Сбор анкеты</div>
                     <div class="text-3xl font-bold text-slate-800">0 мин</div>
                     <div class="text-xs text-red-500 line-through mt-1">было 20 мин</div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center reveal hover-card-effect delay-200">
                     <div class="text-sm text-slate-500 mb-2">Потеря лидов</div>
                     <div class="text-3xl font-bold text-indigo-600">0%</div>
                     <div class="text-xs text-red-500 line-through mt-1">было 20%</div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 text-center reveal hover-card-effect delay-300">
                     <div class="text-sm text-slate-500 mb-2">Доступность</div>
                     <div class="text-3xl font-bold text-green-600">24/7</div>
                     <div class="text-xs text-red-500 line-through mt-1">только будни</div>
@@ -226,7 +262,7 @@
             </div>
 
             <!-- Calculation Block -->
-            <div class="bg-indigo-600 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+            <div class="bg-indigo-600 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden reveal">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full translate-x-1/3 -translate-y-1/3"></div>
                 <div class="relative z-10">
                     <h3 class="text-2xl font-bold mb-6 border-b border-indigo-400 pb-4 inline-block">Экономия в 10 раз</h3>
@@ -432,5 +468,121 @@
         </div>
     </footer>
 
+    <script>
+        // Scroll Animation Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Once revealed, we don't need to observe it anymore
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Navbar Scroll Effect
+            const navbar = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.classList.add('shadow-md');
+                    navbar.classList.replace('bg-white/80', 'bg-white/95');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.replace('bg-white/95', 'bg-white/80');
+                }
+            });
+
+            // Chat Simulation
+            const chatContainer = document.getElementById('chat-messages');
+            const messages = [
+                { text: 'Здравствуйте! Я AI-ассистент. Интересует вакансия Менеджера?', isBot: true, delay: 500 },
+                { text: 'Да, добрый вечер! Хочу узнать подробности.', isBot: false, delay: 1500 },
+                { text: 'Отлично! У нас гибкий график и оклад от 80к. Подскажите, есть ли у вас опыт работы в продажах?', isBot: true, delay: 1000 },
+                { text: 'Да, работал 2 года в недвижимости.', isBot: false, delay: 2000 },
+                { text: 'Прекрасно. Записал. Какой график вам удобен?', isBot: true, delay: 1000 }
+            ];
+
+            let currentMessageIndex = 0;
+
+            function createMessageBubble(text, isBot) {
+                const div = document.createElement('div');
+                div.className = isBot 
+                    ? 'bg-slate-700 p-3 rounded-2xl rounded-tl-none max-w-[80%] reveal active' 
+                    : 'bg-indigo-600 p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto text-white reveal active';
+                div.textContent = text;
+                return div;
+            }
+
+            function createTypingIndicator() {
+                const div = document.createElement('div');
+                div.className = 'bg-slate-700 p-4 rounded-2xl rounded-tl-none w-16 flex items-center gap-1 reveal active';
+                div.id = 'typing-indicator';
+                
+                for(let i=0; i<3; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'w-2 h-2 bg-slate-400 rounded-full typing-dot';
+                    div.appendChild(dot);
+                }
+                return div;
+            }
+
+            async function playChat() {
+                if (currentMessageIndex >= messages.length) {
+                    // Reset chat to loop after a delay
+                    setTimeout(() => {
+                        chatContainer.innerHTML = '';
+                        currentMessageIndex = 0;
+                        playChat();
+                    }, 5000);
+                    return;
+                }
+
+                const msg = messages[currentMessageIndex];
+                
+                if (msg.isBot) {
+                    // Show typing indicator for bot
+                    const typing = createTypingIndicator();
+                    chatContainer.appendChild(typing);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    
+                    await new Promise(r => setTimeout(r, 1500)); // Typing duration
+                    typing.remove();
+                } else {
+                    // User 'types' invisibly
+                    await new Promise(r => setTimeout(r, msg.delay));
+                }
+
+                const bubble = createMessageBubble(msg.text, msg.isBot);
+                chatContainer.appendChild(bubble);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                currentMessageIndex++;
+                // Small pause before next action
+                setTimeout(playChat, 500); 
+            }
+
+            // Start chat when it comes into view
+            const chatObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && chatContainer.children.length === 0) {
+                        playChat();
+                        chatObserver.disconnect();
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            chatObserver.observe(chatContainer);
+        });
+    </script>
 </body>
 </html>
